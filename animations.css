@@ -1,0 +1,114 @@
+/* 
+   Animations & 3D Utility Styles 
+   This file handles global animations, keyframes, and the 3D icon system.
+*/
+
+/* --- Keyframes --- */
+
+/* Gentle floating effect for icons */
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(3deg); }
+}
+
+/* Pulse effect for glow backgrounds */
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* Entrance reveal animation */
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navbar link fade-in (Mobile) */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- 3D Icon Box System --- */
+
+.icon-box-3d {
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(145deg, #1e293b, #0b1120);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), 
+                -2px -2px 6px rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: visible;
+    margin-bottom: 12px; /* Added spacing to prevent touching text below */
+}
+
+/* The Icon itself */
+.icon-box-3d i {
+    display: inline-block;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+}
+
+/* Hover States for 3D Boxes */
+.icon-box-3d:hover {
+    transform: translateY(-8px); /* Removed tilt/rotation */
+    background: linear-gradient(145deg, #2563eb, #1e40af);
+    color: #fff;
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.icon-box-3d:hover i {
+    color: #fff;
+    transform: scale(1.2); /* Removed rotate(360deg) */
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+}
+
+/* Specific Badge Colors (Certification) */
+.cert-badge .icon-box-3d {
+    background: linear-gradient(145deg, #3d2b14, #1a1106);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.cert-badge .icon-box-3d i {
+    color: #f59e0b; /* Vibrant Gold */
+}
+
+.cert-badge:hover .icon-box-3d {
+    background: linear-gradient(145deg, #f59e0b, #d97706);
+    border-color: #fbbf24;
+}
+
+.cert-badge:hover .icon-box-3d i {
+    color: #ffffff; /* Change icon to white on gold background to prevent 'mixing up' */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.cert-badge:hover {
+    border-color: #f59e0b;
+    transform: translateY(-5px);
+}
+
+/* Reveal active state trigger */
+.reveal.active {
+    animation: revealUp 0.8s ease forwards;
+}
